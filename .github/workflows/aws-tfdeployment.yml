@@ -1,0 +1,45 @@
+name: TF AWS Infrastructure Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      tfRegion:
+        description: 'Mention the AWS region to deploy. Ex: eu-west-2'
+        required: true
+        default: 'us-east-1'
+
+      tfEnv:
+        description: 'Select Environment, dev/prod.'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+          - dev
+          - prod
+
+      tfAction:
+        description: 'Select TF actions'
+        required: true
+        default: 'plan'
+        type: choice
+        options:
+          - plan
+          - apply
+          - destroy
+
+      tfDeploy:
+        description: 'Choose which AWS service to be deployed'
+        required: true
+        default: 'none'
+        type: choice
+        options:
+          - none
+          - aws_vpc
+          - aws_eks
+jobs:
+  ## VPC Deployment ##
+  vpc_deployment:
+    name: "Deploying AWS VPC"
+    if: ${{ github.event.inputs.tfDeploy == 'aws_vpc' }}
+    runs-on: ubuntu-latest
+    
