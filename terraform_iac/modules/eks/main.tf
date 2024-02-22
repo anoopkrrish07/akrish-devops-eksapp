@@ -3,8 +3,9 @@ resource "random_id" "id" {
 }
 
 module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
-  version = "20.2.1"
+  # source  = "terraform-aws-modules/eks/aws"
+  # version = "20.2.1"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=6c168effbe06f6e5ad4b122c7a3b491a2e1c874a"
 
   cluster_name                             = "${var.env}-${var.group}-${random_id.id.hex}"
   cluster_version                          = "1.28"
