@@ -1,0 +1,25 @@
+name: Checkov
+
+on:
+  push:
+    branches:
+        - 'akrish/**'
+#   pull_request:
+#     types:
+#         - opened
+#     branches:
+#         - master        
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Checkov action
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: terraform_iac/
+          framework: terraform
