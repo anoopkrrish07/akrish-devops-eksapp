@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  db:
+    container_name: posgredb
+    image: postgres:16.2-bookworm
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - internal
+
+  app:
+    container_name: flaskapp
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      FLASK_ENV: development
+      FLASK_APP: app/app.py
+      FLASK_RUN_HOST: 0.0.0.0
+      SQLALCHEMY_DATABASE_URI: ${SQLALCHEMY_DATABASE_URI}
+    networks:
+      - internal
+
+volumes:
+  postgres_data:
+
+networks:
+  internal:

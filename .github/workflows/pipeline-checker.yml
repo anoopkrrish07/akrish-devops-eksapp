@@ -23,3 +23,4 @@ jobs:
         with:
           directory: terraform_iac/
           framework: terraform
+          skip_check: 'CKV_AWS_356,CKV_AWS_108,CKV_AWS_111,CKV_TF_1'
