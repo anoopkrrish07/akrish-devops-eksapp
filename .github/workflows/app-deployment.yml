@@ -41,5 +41,5 @@ jobs:
   
     - name: Deploy on EKS
       run: |
-        kubectl apply -f manifests/deployment.yaml
-        kubectl apply -f manifests/service.yaml
+        kubectl apply -f manifests/deployment.yaml --namespace $NAMESPACE
+        kubectl apply -f manifests/service.yaml --namespace $NAMESPACE

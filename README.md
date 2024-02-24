@@ -15,7 +15,7 @@ The CI/CD pipeline is built using GitHub Actions and includes steps for code sca
 !["Architecture"](assets/architecture.png?raw=true)
 
 ## Repo Tree:
-
+```
 .
 ├── README.md
 ├── flask_app/
@@ -40,7 +40,7 @@ The CI/CD pipeline is built using GitHub Actions and includes steps for code sca
     └── modules/
         ├── eks
         └── vpc
-
+```
 
 ## Tools used:
 - Terraform (1.7.4)
