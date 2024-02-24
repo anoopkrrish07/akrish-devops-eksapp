@@ -9,7 +9,7 @@ variable "aws_region" {
 
 variable "app" {
   type    = string
-  default = "gotest"
+  default = "pytest"
 }
 
 variable "env" {

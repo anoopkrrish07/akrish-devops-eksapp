@@ -14,7 +14,7 @@ variable "group" {
 
 variable "app" {
   type    = string
-  default = "goapp"
+  default = "pytest"
 }
 
 variable "aws_region" {
