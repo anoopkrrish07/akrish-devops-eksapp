@@ -32,3 +32,9 @@ output "KarpenterSQSName" {
   description = "Karpenter Interruption SQS Name"
   value       = module.eks_karpenter.queue_name
 }
+
+# ECR variables
+output "ecr_repository_url" {
+  description = "The URL of the ECR repository"
+  value = aws_ecr_repository.ecr.repository_url
+}
