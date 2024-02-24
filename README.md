@@ -58,9 +58,9 @@ The CI/CD pipeline is built using GitHub Actions and includes steps for code sca
 ## How to deploy:
 
 ### Pre-deploy steps:
-1. Create AWS GitHub OIDC access for the terraform infrastructure and application deployment. Refer this link for it: LINK
-2. Create a S3 bucket and dynamoDB table and update the backend file (backend.tf) for the terraform state management.
-3. Update the .env file if needed for the local testing
+1. Create AWS GitHub OIDC access for the terraform infrastructure and application deployment. Refer this link for it: [LINK](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services)
+2. Create a S3 bucket and dynamoDB table and update the backend file (`backend.tf`) for the terraform state management.
+3. Update the **.env** file if needed for the local testing
 4. Add these variables in the GitHub repo
 ```yaml
 DEV_AWS_ROLE_ARN = OIDC assume role arn
@@ -93,7 +93,7 @@ NAMESPACE = Namespace of your application
 ```
 
 ### Application job trigger
-- Update the container image spec in the kubernetes deployment manifest (flask-deployment.yaml) with your ECR image identifier..
+- Update the container image spec in the kubernetes deployment manifest (`flask-deployment.yaml`) with your ECR image identifier..
 - App deployment will be triggered when a pull request will be merged to the main branch.
 
 ## Local testing:
