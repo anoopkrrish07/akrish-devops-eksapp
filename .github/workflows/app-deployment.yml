@@ -33,6 +33,7 @@ jobs:
         ECR_REPOSITORY: ${{secrets.AWS_ECR_REPO}}
         IMAGE_TAG: latest
       run: |
+        cd flask_app
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
@@ -41,5 +42,6 @@ jobs:
   
     - name: Deploy on EKS
       run: |
-        kubectl apply -f manifests/deployment.yaml --namespace $NAMESPACE
-        kubectl apply -f manifests/service.yaml --namespace $NAMESPACE
+        cd kube_manifest
+        kubectl apply -f app/flask-deployment.yaml --namespace $NAMESPACE
+        kubectl apply -f app/flask-service.yaml --namespace $NAMESPACE
